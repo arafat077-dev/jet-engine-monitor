@@ -14,7 +14,8 @@ st.set_page_config(page_title="JetGuard AI — Engine Health Monitor",
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-* { font-family: 'Inter', sans-serif !important; }
+*:not([data-testid="stIconMaterial"]):not(.material-symbols-rounded):not(.material-icons) { font-family: 'Inter', sans-serif !important; }
+[data-testid="stIconMaterial"], .material-symbols-rounded, .material-icons { font-family: 'Material Symbols Rounded' !important; }
 .stApp { background: #0A0E1A; }
 section[data-testid="stSidebar"] { background: #0D1117 !important; border-right: 1px solid #1E2A3A; }
 .block-container { padding: 1.5rem 2rem !important; max-width: 1400px; }
