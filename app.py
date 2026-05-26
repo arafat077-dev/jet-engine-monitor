@@ -14,8 +14,7 @@ st.set_page_config(page_title="JetGuard AI — Engine Health Monitor",
 st.markdown("""
 <style>
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
-*:not([data-testid="stIconMaterial"]):not(.material-symbols-rounded):not(.material-icons) { font-family: 'Inter', sans-serif !important; }
-[data-testid="stIconMaterial"], .material-symbols-rounded, .material-icons, [data-testid="stExpanderToggleIcon"] span { font-family: 'Material Symbols Rounded', 'Material Icons' !important; }
+* { font-family: 'Inter', sans-serif !important; }
 .stApp { background: #0A0E1A; }
 section[data-testid="stSidebar"] { background: #0D1117 !important; border-right: 1px solid #1E2A3A; }
 .block-container { padding: 1.5rem 2rem !important; max-width: 1400px; }
@@ -35,8 +34,6 @@ section[data-testid="stSidebar"] { background: #0D1117 !important; border-right:
 [data-testid="stFileUploader"] { background: #0D1117; border: 2px dashed #2A3A52; border-radius: 12px; padding: 16px; }
 [data-testid="stFileUploader"] label { color: #8892A4 !important; }
 [data-testid="stFileUploaderDropzone"] { background: #111827; border-radius: 8px; }
-[data-testid="stFileUploaderDropzone"] button { color: transparent !important; position: relative; min-width: 90px; }
-[data-testid="stFileUploaderDropzone"] button::after { content: 'Upload'; color: #374151; font-size: 0.875rem; font-weight: 500; position: absolute; left: 50%; top: 50%; transform: translate(-50%, -50%); white-space: nowrap; }
 [data-testid="stDataFrame"] { border-radius: 12px; overflow: hidden; }
 ::-webkit-scrollbar { width: 6px; height: 6px; }
 ::-webkit-scrollbar-track { background: #0A0E1A; }
@@ -347,3 +344,52 @@ with tab4:
     for col,(v,d,c) in zip(cols,[("71.7 cy","Detection lead time — 4.8× above the 15-cycle requirement","#1A56DB"),("8.08 cy","Near-failure MAE — most accurate exactly when it matters","#10B981"),("4.54%","False positive rate — reliable alerts, no alarm fatigue","#8B5CF6"),("10 models","Total experiments across 3 algorithm families","#F59E0B")]):
         with col:
             st.markdown(f'<div style="background:#0D1117;border:1px solid #1E2A3A;border-radius:14px;padding:18px;text-align:center;height:150px;display:flex;flex-direction:column;justify-content:center;border-top:3px solid {c};"><div style="font-size:1.6rem;font-weight:800;color:{c}">{v}</div><div style="font-size:0.74rem;color:#8892A4;margin-top:6px;line-height:1.5">{d}</div></div>', unsafe_allow_html=True)
+
+    # ── Credits & Contributions ──
+    st.markdown('<div class="section-header">Project Contributions</div>', unsafe_allow_html=True)
+    st.markdown('<p class="helptext">This system was developed by Group 2 for the Basic Design course at Sejong University. The complete project — from data analysis to the dual-model machine learning pipeline — was a team effort.</p>', unsafe_allow_html=True)
+
+    team = [
+        ("Arafat Mohammed","Project Lead & Lead ML Engineer","Led the ML pipeline, integrated the dual-model system, and designed & built this web application"),
+        ("Latipov Javokhir","Lead ML Engineer","Co-developed model code, feature engineering, and RUL regression"),
+        ("Bhuiyan Ahasanul Monir","Systems Architect","System architecture and functional decomposition design"),
+        ("Esha Anika Tajnima","QA & Testing Engineer","Validation criteria, design targets, and acceptance testing"),
+        ("Yusupjonov Otabek","Decision & Risk Analyst","Concept evaluation (AHP/ANP) and risk analysis"),
+        ("Rubayed","Data Visualisation Specialist","Charts, visual comparisons, and benchmarking"),
+        ("Arfin Ifthekhar","Technical Writer","Documentation and reporting"),
+    ]
+    rows = [team[i:i+2] for i in range(0, len(team), 2)]
+    for row in rows:
+        cols = st.columns(2)
+        for col,(name,role,contrib) in zip(cols,row):
+            with col:
+                st.markdown(f"""
+                <div style="background:#0D1117;border:1px solid #1E2A3A;border-radius:12px;
+                            padding:14px 18px;margin:6px 0;border-left:3px solid #1A56DB;">
+                    <div style="color:#E2E8F0;font-weight:700;font-size:0.92rem">{name}</div>
+                    <div style="color:#60A5FA;font-size:0.76rem;margin:2px 0 6px">{role}</div>
+                    <div style="color:#8892A4;font-size:0.78rem;line-height:1.5">{contrib}</div>
+                </div>""", unsafe_allow_html=True)
+
+    # ── Web app credit ──
+    st.markdown("""
+    <div style="background:linear-gradient(135deg,#0D1B35,#0A0E1A);border:1px solid #1E2A3A;
+                border-radius:16px;padding:24px 28px;margin-top:20px;text-align:center;
+                position:relative;overflow:hidden;">
+        <div style="position:absolute;top:-30px;right:-30px;width:160px;height:160px;
+                    background:radial-gradient(circle,rgba(26,86,219,0.12),transparent 70%);border-radius:50%;"></div>
+        <div style="position:relative;z-index:1;">
+            <div style="font-size:0.72rem;color:#8892A4;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Web Application</div>
+            <div style="font-size:1.1rem;color:#E2E8F0;font-weight:700;">
+                Designed & Developed by <span style="background:linear-gradient(135deg,#1A56DB,#0EA5E9);
+                -webkit-background-clip:text;-webkit-text-fill-color:transparent;">Arafat Mohammed</span>
+            </div>
+            <div style="font-size:0.82rem;color:#8892A4;margin-top:6px;">
+                Project Lead · Group 2 · Sejong University · Basic Design Course
+            </div>
+            <div style="font-size:0.78rem;color:#8892A4;margin-top:10px;">
+                Built with Streamlit · Powered by Isolation Forest + Gradient Boosting on NASA C-MAPSS data
+            </div>
+        </div>
+    </div>
+    """, unsafe_allow_html=True)
