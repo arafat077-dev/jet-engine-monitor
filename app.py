@@ -345,51 +345,69 @@ with tab4:
         with col:
             st.markdown(f'<div style="background:#0D1117;border:1px solid #1E2A3A;border-radius:14px;padding:18px;text-align:center;height:150px;display:flex;flex-direction:column;justify-content:center;border-top:3px solid {c};"><div style="font-size:1.6rem;font-weight:800;color:{c}">{v}</div><div style="font-size:0.74rem;color:#8892A4;margin-top:6px;line-height:1.5">{d}</div></div>', unsafe_allow_html=True)
 
-    # ── Credits & Contributions ──
-    st.markdown('<div class="section-header">Project Contributions</div>', unsafe_allow_html=True)
-    st.markdown('<p class="helptext">This system was developed by Group 2 for the Basic Design course at Sejong University. The complete project — from data analysis to the dual-model machine learning pipeline — was a team effort.</p>', unsafe_allow_html=True)
+# =============================================================================
+#  PROJECT CONTRIBUTIONS  —  modern engineering redesign (drop-in)
+#  Replace your existing "Project Contributions" block with everything below.
+# =============================================================================
 
-    team = [
-        ("Arafat Mohammed","Project Lead & Lead ML Engineer","Led the ML pipeline, integrated the dual-model system, and designed & built this web application"),
-        ("Latipov Javokhir","Lead ML Engineer","Co-developed model code, feature engineering, and RUL regression"),
-        ("Bhuiyan Ahasanul Monir","Systems Architect","System architecture and functional decomposition design"),
-        ("Esha Anika Tajnima","QA & Testing Engineer","Validation criteria, design targets, and acceptance testing"),
-        ("Yusupjonov Otabek","Decision & Risk Analyst","Concept evaluation (AHP/ANP) and risk analysis"),
-        ("Rubayed","Data Visualisation Specialist","Charts, visual comparisons, and benchmarking"),
-        ("Arfin Ifthekhar","Technical Writer","Documentation and reporting"),
-    ]
-    rows = [team[i:i+2] for i in range(0, len(team), 2)]
-    for row in rows:
-        cols = st.columns(2)
-        for col,(name,role,contrib) in zip(cols,row):
-            with col:
-                st.markdown(f"""
-                <div style="background:#0D1117;border:1px solid #1E2A3A;border-radius:12px;
-                            padding:14px 18px;margin:6px 0;border-left:3px solid #1A56DB;">
-                    <div style="color:#E2E8F0;font-weight:700;font-size:0.92rem">{name}</div>
-                    <div style="color:#60A5FA;font-size:0.76rem;margin:2px 0 6px">{role}</div>
-                    <div style="color:#8892A4;font-size:0.78rem;line-height:1.5">{contrib}</div>
-                </div>""", unsafe_allow_html=True)
+st.markdown("""
+<style>
+.contrib-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(330px,1fr));gap:14px;margin:6px 0 22px;}
+.contrib-card{position:relative;background:#0D1117;border:1px solid #1E2A3A;border-radius:14px;padding:18px 20px 18px 22px;overflow:hidden;transition:transform .18s ease,border-color .18s ease;}
+.contrib-card::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--a);}
+.contrib-card:hover{transform:translateY(-3px);border-color:var(--a);}
+.contrib-card.lead{background:#0D1B35;border-color:rgba(26,86,219,.45);}
+.contrib-idx{position:absolute;top:14px;right:16px;font-size:.72rem;font-weight:700;color:#33415C;letter-spacing:.12em;}
+.contrib-hd{display:flex;align-items:center;gap:13px;margin-bottom:11px;}
+.contrib-av{width:46px;height:46px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:1rem;color:#fff;flex-shrink:0;}
+.contrib-nm{font-size:.98rem;font-weight:700;color:#E2E8F0;display:flex;align-items:center;gap:9px;flex-wrap:wrap;}
+.contrib-rl{font-size:.66rem;font-weight:600;text-transform:uppercase;letter-spacing:.07em;margin-top:4px;display:flex;align-items:center;gap:7px;}
+.contrib-dt{width:6px;height:6px;border-radius:50%;flex-shrink:0;}
+.contrib-ds{font-size:.81rem;color:#8892A4;line-height:1.6;}
+.lead-tag{font-size:.56rem;font-weight:800;letter-spacing:.1em;color:#0A0E1A;background:linear-gradient(135deg,#1A56DB,#0EA5E9);padding:3px 9px;border-radius:6px;}
+.credit-bar{text-align:center;background:linear-gradient(135deg,#0D1B35,#0A0E1A);border:1px solid #1E2A3A;border-radius:16px;padding:26px 24px;position:relative;overflow:hidden;}
+.credit-bar::before{content:'';position:absolute;top:0;left:50%;transform:translateX(-50%);width:150px;height:3px;background:linear-gradient(90deg,#1A56DB,#0EA5E9);}
+.credit-kicker{font-size:.68rem;text-transform:uppercase;letter-spacing:.18em;color:#8892A4;margin-bottom:8px;}
+.credit-main{font-size:1.3rem;font-weight:800;color:#E2E8F0;}
+.credit-main span{background:linear-gradient(135deg,#1A56DB,#0EA5E9);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.credit-sub{font-size:.8rem;color:#A6B0C0;margin-top:8px;}
+.credit-meta{font-size:.73rem;color:#8892A4;margin-top:6px;}
+</style>
+""", unsafe_allow_html=True)
 
-    # ── Web app credit ──
-    st.markdown("""
-    <div style="background:linear-gradient(135deg,#0D1B35,#0A0E1A);border:1px solid #1E2A3A;
-                border-radius:16px;padding:24px 28px;margin-top:20px;text-align:center;
-                position:relative;overflow:hidden;">
-        <div style="position:absolute;top:-30px;right:-30px;width:160px;height:160px;
-                    background:radial-gradient(circle,rgba(26,86,219,0.12),transparent 70%);border-radius:50%;"></div>
-        <div style="position:relative;z-index:1;">
-            <div style="font-size:0.72rem;color:#8892A4;text-transform:uppercase;letter-spacing:.08em;margin-bottom:8px;">Web Application</div>
-            <div style="font-size:1.1rem;color:#E2E8F0;font-weight:700;">
-                Designed & Developed by <span style="background:linear-gradient(135deg,#1A56DB,#0EA5E9);
-                -webkit-background-clip:text;-webkit-text-fill-color:transparent;">Arafat Mohammed</span>
-            </div>
-            <div style="font-size:0.82rem;color:#8892A4;margin-top:6px;">
-                Project Lead · Group 2 · Sejong University · Basic Design Course
-            </div>
-            <div style="font-size:0.78rem;color:#8892A4;margin-top:10px;">
-                Built with Streamlit · Powered by Isolation Forest + Gradient Boosting on NASA C-MAPSS data
-            </div>
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
+st.markdown('<div class="section-header">Project Contributions</div>', unsafe_allow_html=True)
+st.markdown('<p class="helptext">Developed by <b style="color:#A6B0C0">Group 2</b> for the Basic Design course at Sejong University — the complete system, from data analysis to the dual-model machine-learning pipeline, was a coordinated team effort.</p>', unsafe_allow_html=True)
+
+# (name, role, description, initials, accent color, is_lead, role_text_color)
+TEAM = [
+    ("Arafat Mohammed", "Project Lead & Lead ML Engineer", "Led the ML pipeline, integrated the dual-model system, and designed & built this web application.", "AM", "#1A56DB", True,  "#5B8DEF"),
+    ("Latipov Javokhir", "Lead ML Engineer", "Co-developed model code, feature engineering, and RUL regression.", "LJ", "#0EA5E9", False, "#0EA5E9"),
+    ("Bhuiyan Ahasanul Monir", "Systems Architect", "System architecture and functional decomposition design.", "BM", "#8B5CF6", False, "#A78BFA"),
+    ("Esha Anika Tajnima", "QA & Testing Engineer", "Validation criteria, design targets, and acceptance testing.", "ET", "#10B981", False, "#34D399"),
+    ("Yusupjonov Otabek", "Decision & Risk Analyst", "Concept evaluation (AHP/ANP) and risk analysis.", "YO", "#F59E0B", False, "#FBBF24"),
+    ("Rubayed", "Data Visualisation Specialist", "Charts, visual comparisons, and competitive benchmarking.", "R", "#EC4899", False, "#F472B6"),
+    ("Arfin Ifthekhar", "Technical Writer", "Documentation and reporting.", "AI", "#14B8A6", False, "#2DD4BF"),
+]
+
+cards = ""
+for i, (name, role, desc, init, color, lead, rcolor) in enumerate(TEAM, 1):
+    tag = '<span class="lead-tag">LEAD</span>' if lead else ''
+    cls = "contrib-card lead" if lead else "contrib-card"
+    cards += (
+        f'<div class="{cls}" style="--a:{color}">'
+        f'<div class="contrib-idx">{i:02d}</div>'
+        f'<div class="contrib-hd">'
+        f'<div class="contrib-av" style="background:linear-gradient(135deg,{color},{color}AA)">{init}</div>'
+        f'<div><div class="contrib-nm">{name}{tag}</div>'
+        f'<div class="contrib-rl" style="color:{rcolor}"><span class="contrib-dt" style="background:{color}"></span>{role}</div>'
+        f'</div></div>'
+        f'<div class="contrib-ds">{desc}</div></div>'
+    )
+st.markdown(f'<div class="contrib-grid">{cards}</div>', unsafe_allow_html=True)
+
+st.markdown("""<div class="credit-bar">
+    <div class="credit-kicker">Web Application</div>
+    <div class="credit-main">Designed &amp; Developed by <span>Arafat Mohammed</span></div>
+    <div class="credit-sub">Project Lead · Group 2 · Sejong University · Basic Design Course</div>
+    <div class="credit-meta">Built with Streamlit · Powered by Isolation Forest + Gradient Boosting on NASA C-MAPSS data</div>
+</div>""", unsafe_allow_html=True)
